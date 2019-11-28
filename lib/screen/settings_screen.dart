@@ -41,32 +41,45 @@ class SettingsScreenState extends State<SettingsScreen> {
         ),
         body: Padding(
           padding: EdgeInsets.all(15.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Container(
-                width: 120.0,
-                alignment: Alignment.center,
-                child: Text('Volume ', // volume slider number display
-                    style: Theme.of(context).textTheme.display1),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Container(
+                    width: 120.0,
+                    alignment: Alignment.center,
+                    child: Text('Volume ', // volume slider number display
+                        style: Theme.of(context).textTheme.display1),
+                  ),
+                  Flexible(
+                    flex: 1,
+                    child: Slider(
+                      // volume slider
+                      activeColor: Colors.indigoAccent,
+                      min: 0.0,
+                      max: 100.0,
+                      onChanged: (newRating) {
+                        setState(() => _sliderValue = newRating);
+                      },
+                      value: _sliderValue,
+                    ),
+                  ),
+                  Container(
+                    width: 70.0,
+                    alignment: Alignment.center,
+                    child: Text(
+                        '${_sliderValue.toInt()}', // volume slider number display
+                        style: Theme.of(context).textTheme.display1),
+                  ),
+                ],
               ),
-              Flexible(
-                flex: 1,
-                child: Slider( // volume slider
-                  activeColor: Colors.indigoAccent,
-                  min: 0.0,
-                  max: 100.0,
-                  onChanged: (newRating) {
-                    setState(() => _sliderValue = newRating);
-                  },
-                  value: _sliderValue,
-                ),
-              ),
-              Container(
-                width: 70.0,
-                alignment: Alignment.center,
-                child: Text('${_sliderValue.toInt()}', // volume slider number display
-                    style: Theme.of(context).textTheme.display1),
+              RaisedButton(
+                child: Text('Save Changes'),
+                onPressed: () {
+                  showAlertDialog(context);
+                },
               ),
             ],
           ),
@@ -77,5 +90,40 @@ class SettingsScreenState extends State<SettingsScreen> {
 
   void goToPreviousScreen() {
     Navigator.pop(context, true);
+  }
+
+  //dialog to save changes
+  showAlertDialog(BuildContext context) {
+    // set up the buttons
+    Widget cancelButton = FlatButton(
+      child: Text("Cancel"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+    Widget continueButton = FlatButton(
+      child: Text("Continue"),
+      onPressed: () {
+        goToPreviousScreen();
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Save Changes"),
+      content: Text("Would you like to save changes?"),
+      actions: [
+        cancelButton,
+        continueButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 }
