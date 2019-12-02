@@ -1,5 +1,32 @@
+# Main Flutter/Dart
 .dart_tool/
 .packages
+.flutter-plugins
+.pub-cache/
+.pub/
 build/
 pubspec.lock
 doc/api/
+
+# Misc
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+
+# VS Code
+.vscode/
+
+# Android
+**/android/**/gradle-wrapper.jar
+**/android/.gradle
+**/android/captures/
+**/android/gradlew
+**/android/gradlew.bat
+**/android/local.properties
+**/android/**/GeneratedPluginRegistrant.java
