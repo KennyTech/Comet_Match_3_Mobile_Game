@@ -7,6 +7,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 
+import 'package:sqlite/notifications.dart';
+
 class TestConsole extends StatefulWidget {
   final int state; // use if needed otherwise remove as argument
 
@@ -22,8 +24,12 @@ class TestConsoleState extends State<TestConsole> {
   int state;
   TestConsoleState(this.state);
 
+  var _notifications = Notifications();
+
   @override
   Widget build(BuildContext context) {
+    _notifications.init(context);
+
     return WillPopScope(
         onWillPop: () {
           goToPreviousScreen();
@@ -118,7 +124,7 @@ class TestConsoleState extends State<TestConsole> {
                             RaisedButton(
                               color: Colors.blue,
                               splashColor: Colors.white,
-                              onPressed: () => {},
+                              onPressed: () => _sendNotification(),
                               child: Text('Notify Me in 10 Seconds',
                                   textScaleFactor: 1.5,
                                   style: TextStyle(color: Colors.white)),
@@ -148,5 +154,12 @@ class TestConsoleState extends State<TestConsole> {
 
   void goToPreviousScreen() {
     Navigator.pop(context, true);
+  }
+
+  Future<void> _sendNotification() async {
+    var when = DateTime.now().add(Duration(seconds: 10));
+
+    await _notifications.sendNotificationLater('Test Console', 'test console notification (10 secs)', when, 'payload');
+    // await _notifications.sendNotificationNow('title', 'body', 'payload');
   }
 }
