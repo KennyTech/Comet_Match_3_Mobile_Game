@@ -22,6 +22,8 @@ class SettingsScreenState extends State<SettingsScreen> {
   int state;
   SettingsScreenState(this.state);
 
+  var _scaffoldKey = GlobalKey<ScaffoldState>();
+
   double _sliderValue = 10.0; // Volume slider
 
   @override
@@ -31,6 +33,7 @@ class SettingsScreenState extends State<SettingsScreen> {
         goToPreviousScreen();
       },
       child: Scaffold(
+        key: _scaffoldKey,
         appBar: AppBar(
           title: Text("Settings"),
           leading: IconButton(
@@ -105,6 +108,13 @@ class SettingsScreenState extends State<SettingsScreen> {
       child: Text("Continue"),
       onPressed: () {
         goToPreviousScreen();
+
+        _scaffoldKey.currentState
+          .showSnackBar(
+            SnackBar(
+              content: Text('Settings Saved!'),
+              duration: Duration(seconds: 2),
+        ));
       },
     );
 
