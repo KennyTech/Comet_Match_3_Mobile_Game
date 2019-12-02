@@ -8,25 +8,7 @@ build/
 pubspec.lock
 doc/api/
 
-# Misc
-*.class
-*.log
-*.pyc
-*.swp
-.DS_Store
-.atom/
-.buildlog/
-.history
-.svn/
-
-# VS Code
+# VS Code & IDEA & Atom
 .vscode/
-
-# Android
-**/android/**/gradle-wrapper.jar
-**/android/.gradle
-**/android/captures/
-**/android/gradlew
-**/android/gradlew.bat
-**/android/local.properties
-**/android/**/GeneratedPluginRegistrant.java
+.idea
+.atom/
