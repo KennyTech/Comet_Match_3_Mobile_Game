@@ -48,7 +48,6 @@ class LevelSelectState extends State<LevelSelect> {
                   goToPreviousScreen();
                 }),
           ),
-
           body: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -60,27 +59,26 @@ class LevelSelectState extends State<LevelSelect> {
                 SizedBox(
                   height: 200.0,
                   child: ListView.builder(
-                      physics: ClampingScrollPhysics(),
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      itemCount: 5, // 5 levels
-                      itemBuilder: (BuildContext context, int index) => Card(
-                            color: _selectedLevelColor[index]
-                                ? Colors.blue[100]
-                                : Colors.white,
-                            child: InkWell(
-                                onTap: () {
-                                  debugPrint('Selected a grade');
-                                  _selectedLevel = index; // Set as selected
-                                  setState(() {
-                                    _removePrevColor(); // remove previous selection highlight
-                                    _selectedLevelColor[_selectedLevel] =
-                                        !_selectedLevelColor[
-                                            _selectedLevel]; // highlight new selection
-                                  });
-                                },
-                                child: Text("      Level $index      ")),
-                          )),
+                    physics: ClampingScrollPhysics(),
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 5, // 5 levels
+                    itemBuilder: (BuildContext context, int index) => Card(
+                      color: _selectedLevelColor[index]
+                        ? Colors.blue[100]
+                        : Colors.white,
+                      child: InkWell(
+                        onTap: () {
+                          debugPrint('Selected a grade');
+                          _selectedLevel = index; // Set as selected
+                          setState(() {
+                            _removePrevColor(); // remove previous selection highlight
+                            _selectedLevelColor[_selectedLevel] =
+                              !_selectedLevelColor[_selectedLevel]; // highlight new selection
+                          });
+                        },
+                        child: Text("      Level $index      ")),
+                    )),
                 ),
                 Text(
                   'Level Information',
