@@ -11,6 +11,11 @@ import 'package:flutter/rendering.dart';
 
 import 'dart:math';
 import 'package:pie_chart/pie_chart.dart';
+import 'package:sqlite/screen/scores_table_screen.dart';
+
+import 'package:sqlite/localstorage/players_model.dart';
+import 'package:sqlite/localstorage/player.dart';
+import 'package:sqflite/sqflite.dart';
 
 
 class ScoresChartScreen extends StatefulWidget {
@@ -50,6 +55,13 @@ class ScoresChartScreenState extends State<ScoresChartScreen> {
   List<int> avgScore = [75,45,60,35,25];
   List<int> recentScore = [1,2,3,4,5,6,7,8,9,10];
 
+  PlayersModel databaseHelper = PlayersModel();
+  List<Player> playerList;
+  int playerCount = 0;
+  int currentPlayer = 0;
+  static bool once = false;
+  
+
   // Test function to randomize scores (TO-DO: Save/load scores from databases instead)
   void _randomizeScoreAndTimes() {
     setState(() {
@@ -65,9 +77,11 @@ class ScoresChartScreenState extends State<ScoresChartScreen> {
         }
     });
   }
-
+  
   @override
   Widget build(BuildContext context) {
+
+    // _genTestPlayers(); // generate some test player high scores for table
 
     double scrWidth = MediaQuery.of(context).size.width;
 
@@ -184,18 +198,13 @@ class ScoresChartScreenState extends State<ScoresChartScreen> {
                       height: 60,
                       child: RaisedButton(
                         elevation: 5,
-                        color: Colors.blue[300],
+                        color: Colors.indigo[200],
                         textColor: Colors.grey[300],
                         child: Text(
-                          'Charts',
-                          textScaleFactor: 1.5,
+                          'Score Charts',
+                          textScaleFactor: 1.4,
                         ),
-                        onPressed: () {
-                          {};
-                          setState(() {
-                            debugPrint("Stats clicked");
-                          });
-                        },
+                        onPressed: () {},
                       ),
                     ),
                     Container(
@@ -207,15 +216,10 @@ class ScoresChartScreenState extends State<ScoresChartScreen> {
                         color: Colors.blue,
                         textColor: Colors.white,
                         child: Text(
-                          'Tables',
-                          textScaleFactor: 1.5,
+                          'High Score Tables',
+                          textScaleFactor: 1.4,
                         ),
-                        onPressed: () {
-                          {};
-                          setState(() {
-                            debugPrint("Start clicked");
-                          });
-                        },
+                        onPressed: () => _goToTableScreen(),
                       ),
                     ),
                   ],
@@ -223,14 +227,14 @@ class ScoresChartScreenState extends State<ScoresChartScreen> {
 
             _displayText("YOUR STATS", 24, Colors.black, 24, 24),
 
-            _displayText("Times Played", 18, Colors.grey[700], 0, 0),
-            pieChartWidget,
-
             _displayText("Average Score (All)", 18, Colors.grey[700], 32, 0),
             barChartWidget,
 
             _displayText("Scores (Most Recent 10 Games)", 18, Colors.grey[700], 32, 0),
             barScoresChartWidget,
+
+            _displayText("Times You Played", 18, Colors.grey[700], 0, 0),
+            pieChartWidget,
 
           ],
         ),
@@ -243,6 +247,54 @@ class ScoresChartScreenState extends State<ScoresChartScreen> {
       ),
 
     );
+  }
+
+  // // Generate test players now (for table screen)
+  // void _genTestPlayers() async {
+  //   if (!once) {
+  //     Player player1 = new Player.withScores(0, 'Billy', "80", "5 10 15 20");
+  //     Player player2 = new Player.withScores(1, 'Bob', "85", "5 10 15 20");
+
+  //       debugPrint('Adding new player 1');
+  //       databaseHelper.insertPlayer(player1);
+  //       databaseHelper.insertPlayer(player2);
+  //     }
+
+  //     updateTableView();
+  //     once = true;
+
+  //     // debug print player list 
+  //     debugPrint(databaseHelper.getPlayerList().toString());
+  //   }
+
+    // Update DB (future) & UI
+  void updateTableView() {
+    final Future<Database> dbFuture = databaseHelper.initializeDatabase();
+    dbFuture.then((database) {
+      Future<List<Player>> playerListFuture = databaseHelper.getPlayerList();
+      playerListFuture.then((playerList) {
+        setState(() {
+          this.playerList = playerList;
+          this.playerCount = playerList.length;
+        });
+      });
+    });
+  }
+
+  
+
+  // Go to table screen
+    void _goToTableScreen() async {
+    debugPrint("Going to table screen");
+
+    bool result =
+        await Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return ScoresTableScreen();
+    }));
+
+    if (result == true) {
+      // do something if needed in future
+    }
   }
 
   // Display a padded text

@@ -4,8 +4,8 @@
 * Change particular settings (ie. notification settings, volume slider, etc)
 */
 
-import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 
 class SettingsScreen extends StatefulWidget {
   final int state; // use if needed otherwise remove as argument
@@ -47,9 +47,51 @@ class SettingsScreenState extends State<SettingsScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                Container(
+                    margin: EdgeInsets.all(20.0),
+                    child: RaisedButton(
+                      color: Colors.blue,
+                      textColor: Colors.white,
+                      child: Text(
+                        'EN',
+                        textScaleFactor: 1.5,
+                      ),
+                      onPressed: () {
+                        Locale newLocale = Locale('en');
+                        setState(() {
+                          FlutterI18n.refresh(context, newLocale);
+                        });
+                      },
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.all(20.0),
+                    child: RaisedButton(
+                      color: Colors.blue,
+                      textColor: Colors.white,
+                      child: Text(
+                        'PT',
+                        textScaleFactor: 1.5,
+                      ),
+                      onPressed: () {
+                        Locale newLocale = Locale('pt');
+                        setState(() {
+                          FlutterI18n.refresh(context, newLocale);
+                        });
+                      },
+                    ),
+                  ),
+                ],
+              ),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
+
                   Container(
                     width: 120.0,
                     alignment: Alignment.center,
@@ -79,7 +121,7 @@ class SettingsScreenState extends State<SettingsScreen> {
                 ],
               ),
               RaisedButton(
-                child: Text('Save Changes'),
+                child: Text(FlutterI18n.translate(context, 'menu.save'), textScaleFactor: 1.5),
                 onPressed: () {
                   showAlertDialog(context);
                 },
