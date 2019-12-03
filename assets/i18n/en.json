@@ -1,0 +1,13 @@
+{
+    "menu": {
+        "play": "Play",
+        "characters": "Characters",
+        "scores": "Scores",
+        "settings": "Settings",
+        "credits": "Credits",
+        "testconsole": "Test Console",
+        "quit": "Quit",
+        "save": "Save Changes",
+        "volume": "Volume"
+    }
+}

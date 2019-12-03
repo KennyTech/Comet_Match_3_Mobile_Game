@@ -1,0 +1,13 @@
+{
+    "menu": {
+        "play": "Toque",
+        "characters": "Personagens",
+        "scores": "Pontuações",
+        "settings": "Configurações",
+        "credits": "Créditos",
+        "testconsole": "Console de teste",
+        "quit": "Sair",
+        "save": "Salvar alterações",
+        "volume": "Volume"
+    }
+}

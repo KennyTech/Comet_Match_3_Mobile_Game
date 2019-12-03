@@ -12,6 +12,10 @@ import 'package:sqlite/screen/character_compendium.dart';
 import 'package:sqlite/screen/settings_screen.dart';
 import 'package:sqlite/screen/test_console.dart';
 import 'package:sqlite/screen/credits_screen.dart';
+import 'package:sqlite/screen/scores_chart_screen.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
+import 'package:flutter_i18n/flutter_i18n_delegate.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class MainMenu extends StatefulWidget {
   @override
@@ -58,9 +62,7 @@ class MainMenuState extends State<MainMenu> {
                     color: Colors.blue,
                     splashColor: Colors.white,
                     onPressed: () => _goToScreen("level_select"),
-                    child: Text('Play',
-                        textScaleFactor: 1.5,
-                        style: TextStyle(color: Colors.white)),
+                    child: Text(FlutterI18n.translate(context, 'menu.play'), textScaleFactor: 1.5, style: TextStyle(color: Colors.white)),
                   ),
                 ],
               ),
@@ -75,9 +77,22 @@ class MainMenuState extends State<MainMenu> {
                     color: Colors.blue,
                     splashColor: Colors.white,
                     onPressed: () => _goToScreen("character"),
-                    child: Text('Characters',
-                        textScaleFactor: 1.5,
-                        style: TextStyle(color: Colors.white)),
+                    child: Text(FlutterI18n.translate(context, 'menu.characters'), textScaleFactor: 1.5, style: TextStyle(color: Colors.white)),
+                  ),
+                ],
+              ),
+            ),
+
+            Padding(
+              padding: EdgeInsets.all(10.0),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  RaisedButton(
+                    color: Colors.blue,
+                    splashColor: Colors.white,
+                    onPressed: () => _goToScreen("scores"),
+                    child: Text(FlutterI18n.translate(context, 'menu.scores'), textScaleFactor: 1.5, style: TextStyle(color: Colors.white)),
                   ),
                 ],
               ),
@@ -92,9 +107,7 @@ class MainMenuState extends State<MainMenu> {
                     color: Colors.blue,
                     splashColor: Colors.white,
                     onPressed: () => _goToScreen("settings"),
-                    child: Text('Settings',
-                        textScaleFactor: 1.5,
-                        style: TextStyle(color: Colors.white)),
+                    child: Text(FlutterI18n.translate(context, 'menu.settings'), textScaleFactor: 1.5, style: TextStyle(color: Colors.white)),
                   ),
                 ],
               ),
@@ -109,9 +122,7 @@ class MainMenuState extends State<MainMenu> {
                     color: Colors.blue,
                     splashColor: Colors.white,
                     onPressed: () => _goToScreen("credits"),
-                    child: Text('Credits',
-                        textScaleFactor: 1.5,
-                        style: TextStyle(color: Colors.white)),
+                    child: Text(FlutterI18n.translate(context, 'menu.credits'), textScaleFactor: 1.5, style: TextStyle(color: Colors.white)),
                   ),
                 ],
               ),
@@ -126,9 +137,7 @@ class MainMenuState extends State<MainMenu> {
                     color: Colors.blue,
                     splashColor: Colors.white,
                     onPressed: () => _goToScreen("test_console"),
-                    child: Text('Test Console',
-                        textScaleFactor: 1.5,
-                        style: TextStyle(color: Colors.white)),
+                    child: Text(FlutterI18n.translate(context, 'menu.testconsole'), textScaleFactor: 1.5, style: TextStyle(color: Colors.white)),
                   ),
                 ],
               ),
@@ -143,9 +152,7 @@ class MainMenuState extends State<MainMenu> {
                     color: Colors.blue,
                     splashColor: Colors.white,
                     onPressed: () => {},
-                    child: Text('Quit',
-                        textScaleFactor: 1.5,
-                        style: TextStyle(color: Colors.white)),
+                    child: Text(FlutterI18n.translate(context, 'menu.quit'), textScaleFactor: 1.5, style: TextStyle(color: Colors.white)),
                   ),
                 ],
               ),
@@ -163,6 +170,7 @@ class MainMenuState extends State<MainMenu> {
       await Navigator.push(context, MaterialPageRoute(builder: (context) {
       if (screen == "level_select") return LevelSelect(0);
       else if (screen == "character") return CharacterCompendium(0);
+      else if (screen == "scores") return ScoresChartScreen();
       else if (screen == "settings") return SettingsScreen(0);
       else if (screen == "credits") return CreditsScreen(0);
       else if (screen == "test_console") return TestConsole(0);
