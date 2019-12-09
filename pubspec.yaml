@@ -24,6 +24,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
 
+  latlong:
+  flutter_map:
+  geolocator: ^5.1.5
+
   sqflite:
   path:
   path_provider: any # for database helper
