@@ -1,5 +1,5 @@
-name: sqlite
-description: A new Flutter project.
+name: finalproject
+description: CSCI 4100U Mobile Group Project - Match 3 Flutter with Unity implementation.
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -42,6 +42,7 @@ dependencies:
   nice_button: ^0.1.7
 
   flutter_unity_widget: ^0.1.6+5
+  firebase_auth: ^0.15.1
 
   
 

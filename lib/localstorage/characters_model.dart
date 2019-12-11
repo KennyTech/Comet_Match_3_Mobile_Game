@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:sqflite/sqflite.dart';
 
-import 'package:sqlite/localstorage/DBUtils.dart';
-import 'package:sqlite/localstorage/character.dart';
+import 'package:finalproject/localstorage/DBUtils.dart';
+import 'package:finalproject/localstorage/character.dart';
 
 
 class CharactersModel {

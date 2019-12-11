@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:finalproject/services/base_auth.dart';
 
 class SignIn extends StatefulWidget {
@@ -103,9 +102,12 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xFF121212),
       // backgroundColor: Color(0xFF1F1B24),
-      body: Stack(
+      body: SingleChildScrollView(
+        //physics: NeverScrollableScrollPhysics(), // don't let page scroll down (we later increase height of page to prevent potential pixel overflow from some devices)
+        child: Stack(
         children: _isSignInForm ? <Widget>[
           _showSignInForm(),
           showCircularProgress(),
@@ -113,7 +115,8 @@ class _SignInState extends State<SignIn> {
           _showSignUpForm(),
           showCircularProgress(),
         ],
-      )
+      ),
+      ),
     );  
   }
 
@@ -130,6 +133,7 @@ class _SignInState extends State<SignIn> {
 
     Widget _showSignUpForm() {
     return new Container(
+      //height: MediaQuery.of(context).size.width*2.5, // Increase height of page to prevent pixel overflow from some devices
       child: Column(
         children: <Widget>[
           showLogo(),
@@ -160,6 +164,7 @@ class _SignInState extends State<SignIn> {
 
   Widget _showSignInForm() {
     return new Container(
+      //height: MediaQuery.of(context).size.width*2.5, // Increase height of page to prevent pixel overflow from some devices
       child: Column(
         children: <Widget>[
           showLogo(),

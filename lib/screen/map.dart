@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
-import 'package:sqlite/location/location.dart';
+import 'package:finalproject/location/location.dart';
 //import 'package:geolocator/geolocator.dart';
 
 class MapsPage extends StatefulWidget {
