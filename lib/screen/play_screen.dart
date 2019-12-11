@@ -20,6 +20,9 @@ class PlayScreen extends StatefulWidget {
 }
 
 class PlayScreenState extends State<PlayScreen>{
+
+  int playerScore = 0;
+
   static final GlobalKey<ScaffoldState> _scaffoldKey =
       GlobalKey<ScaffoldState>();
   UnityWidgetController _unityWidgetController;
@@ -47,8 +50,20 @@ class PlayScreenState extends State<PlayScreen>{
     );
   }
 
+  // Communication from Flutter to Unity to tell Unity which level to load
+  // void setLevel(int level) {
+  //   _unityWidgetController.postMessage(
+  //     'LevelManager',
+  //     'setLevel',
+  //     level,
+  //   );
+  // }
+
+  // Receive score from Unity
   void onUnityMessage(controller, message) {
     print('Received message from unity: ${message.toString()}');
+    playerScore = int.parse(message.toString());
+    print("Player Score: " + playerScore.toString()); // Test
     _unityWidgetController.pause();
     //goToPreviousScreen();
   }

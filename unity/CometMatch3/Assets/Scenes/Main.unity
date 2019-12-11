@@ -2161,7 +2161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fuelBar: {fileID: 1728186049}
-  amount: 2000
+  amount: 1500
 --- !u!222 &2118524149
 CanvasRenderer:
   m_ObjectHideFlags: 2

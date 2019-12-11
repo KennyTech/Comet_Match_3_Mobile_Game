@@ -507,11 +507,11 @@ namespace CometMatchThree {
                             score.IncreaseCount(200); 
                         }
 
-                        // Ship gives 75 fuel
+                        // Ship gives 60 fuel
                         if (mostRecentColor == 2) {
                             GameObject fuelObject = GameObject.Find("Fuel_Text");
                             Fuel fuel = fuelObject.GetComponent<Fuel>();
-                            fuel.IncreaseFuel(75); 
+                            fuel.IncreaseFuel(60); 
                         }
 
                         // Comet gives +100 score
@@ -521,11 +521,11 @@ namespace CometMatchThree {
                             score.IncreaseCount(100); 
                         }
 
-                        // UFO gives 150 fuel
+                        // UFO gives 120 fuel
                         if (mostRecentColor == 4) {
                             GameObject fuelObject = GameObject.Find("Fuel_Text");
                             Fuel fuel = fuelObject.GetComponent<Fuel>();
-                            fuel.IncreaseFuel(150); 
+                            fuel.IncreaseFuel(120); 
                         }
 
                         comboCount++;
