@@ -1,6 +1,7 @@
 package io.flutter.plugins;
 
 import io.flutter.plugin.common.PluginRegistry;
+import xyz.luan.audioplayers.AudioplayersPlugin;
 import com.dexterous.flutterlocalnotifications.FlutterLocalNotificationsPlugin;
 import com.rexraphael.flutterunitywidget.FlutterUnityWidgetPlugin;
 import com.baseflow.geolocator.GeolocatorPlugin;
@@ -17,6 +18,7 @@ public final class GeneratedPluginRegistrant {
     if (alreadyRegisteredWith(registry)) {
       return;
     }
+    AudioplayersPlugin.registerWith(registry.registrarFor("xyz.luan.audioplayers.AudioplayersPlugin"));
     FlutterLocalNotificationsPlugin.registerWith(registry.registrarFor("com.dexterous.flutterlocalnotifications.FlutterLocalNotificationsPlugin"));
     FlutterUnityWidgetPlugin.registerWith(registry.registrarFor("com.rexraphael.flutterunitywidget.FlutterUnityWidgetPlugin"));
     GeolocatorPlugin.registerWith(registry.registrarFor("com.baseflow.geolocator.GeolocatorPlugin"));
