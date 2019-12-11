@@ -45,3 +45,8 @@ subprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+//dependencies {
+    //implementation project(':UnityExport')
+    //implementation project(':unity-classes') // the unity classes module
+//}

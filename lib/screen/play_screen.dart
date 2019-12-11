@@ -4,59 +4,58 @@
 * The screen where the gameplay takes place.
 */
 
-import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_unity_widget/flutter_unity_widget.dart';
 
 class PlayScreen extends StatefulWidget {
 
-	final int level; // use if needed otherwise remove as argument
+  //PlayScreen({Key key}) : super(key: key);
 
-	PlayScreen(this.level);
+  final int level;
 
-	@override
-  State<StatefulWidget> createState() {
-
-    return PlayScreenState(this.level);
-  }
+  PlayScreen(this.level);
+  
+  @override
+  PlayScreenState createState() => PlayScreenState();
 }
 
-class PlayScreenState extends State<PlayScreen> {
+class PlayScreenState extends State<PlayScreen>{
+  static final GlobalKey<ScaffoldState> _scaffoldKey =
+      GlobalKey<ScaffoldState>();
+  UnityWidgetController _unityWidgetController;
 
-	int level;
-	PlayScreenState(this.level);
-
-	@override
   Widget build(BuildContext context) {
 
-    return WillPopScope(
+    return Scaffold(
+      key: _scaffoldKey,
+      body: SafeArea(
+        bottom: false,
+        child: WillPopScope(
+          onWillPop: () {
+            // Pop the category page if Android back button is pressed.
+          },
+          child: Container(
+            color: Colors.yellow,
+            child: UnityWidget(
+              onUnityViewCreated: onUnityCreated,
+              isARScene: false,
+              onUnityMessage: onUnityMessage,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 
-	    onWillPop: () {
-		    goToPreviousScreen();
-	    },
+  void onUnityMessage(controller, message) {
+    print('Received message from unity: ${message.toString()}');
+    _unityWidgetController.pause();
+    //goToPreviousScreen();
+  }
 
-	    child: Scaffold(
-	    appBar: AppBar(
-		    title: Text("Play Game"),
-		    leading: IconButton(icon: Icon(
-				    Icons.arrow_back),
-				    onPressed: () {
-		    	    goToPreviousScreen();
-				    }
-		    ),
-	    ),
-
-	    body: Padding(
-		    padding: EdgeInsets.all(5.0),
-		    child: ListView(
-			    children: <Widget>[
-
-            // Add widgets
-
-			    ],
-		    ),
-	    ),
-
-    ));
+  // Callback that connects the created controller to the unity controller
+  void onUnityCreated(controller) {
+    this._unityWidgetController = controller;
   }
 
   void goToPreviousScreen() {

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.MobileGroup.CometMatchThree" xmlns:tools="http://schemas.android.com/tools" android:installLocation="preferExternal">
+  <supports-screens android:smallScreens="true" android:normalScreens="true" android:largeScreens="true" android:xlargeScreens="true" android:anyDensity="true" />
+  <application>
+    
+    <meta-data android:name="unity.build-id" android:value="e6e1c618-1e0e-484f-ae6b-b4639090f7e8" />
+    <meta-data android:name="unity.splash-mode" android:value="0" />
+    <meta-data android:name="unity.splash-enable" android:value="True" />
+    <meta-data android:name="notch.config" android:value="portrait|landscape" />
+  </application>
+  <uses-feature android:glEsVersion="0x00020000" />
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+  <uses-feature android:name="android.hardware.touchscreen.multitouch" android:required="false" />
+  <uses-feature android:name="android.hardware.touchscreen.multitouch.distinct" android:required="false" />
+</manifest>
