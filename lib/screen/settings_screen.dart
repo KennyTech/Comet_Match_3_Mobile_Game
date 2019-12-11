@@ -33,6 +33,7 @@ class SettingsScreenState extends State<SettingsScreen> {
         goToPreviousScreen();
       },
       child: Scaffold(
+        backgroundColor: Color(0xFF121212),
         key: _scaffoldKey,
         appBar: AppBar(
           title: Text("Settings"),
@@ -47,14 +48,13 @@ class SettingsScreenState extends State<SettingsScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                Container(
+                  Container(
                     margin: EdgeInsets.all(20.0),
                     child: RaisedButton(
-                      color: Colors.blue,
+                      color: Colors.purple[300],
                       textColor: Colors.white,
                       child: Text(
                         'EN',
@@ -71,7 +71,7 @@ class SettingsScreenState extends State<SettingsScreen> {
                   Container(
                     margin: EdgeInsets.all(20.0),
                     child: RaisedButton(
-                      color: Colors.blue,
+                      color: Colors.purple[300],
                       textColor: Colors.white,
                       child: Text(
                         'PT',
@@ -87,22 +87,20 @@ class SettingsScreenState extends State<SettingsScreen> {
                   ),
                 ],
               ),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-
                   Container(
                     width: 120.0,
                     alignment: Alignment.center,
-                    child: Text('Volume ', // volume slider number display
-                        style: Theme.of(context).textTheme.display1),
+                    child: Text('Volume '),
+                    color: Colors.teal[300],
                   ),
                   Flexible(
                     flex: 1,
                     child: Slider(
                       // volume slider
-                      activeColor: Colors.indigoAccent,
+                      activeColor: Colors.purple,
                       min: 0.0,
                       max: 100.0,
                       onChanged: (newRating) {
@@ -115,13 +113,15 @@ class SettingsScreenState extends State<SettingsScreen> {
                     width: 70.0,
                     alignment: Alignment.center,
                     child: Text(
-                        '${_sliderValue.toInt()}', // volume slider number display
-                        style: Theme.of(context).textTheme.display1),
+                      '${_sliderValue.toInt()}', // volume slider number display
+                    ),
+                    color: Colors.teal[300],
                   ),
                 ],
               ),
               RaisedButton(
-                child: Text(FlutterI18n.translate(context, 'menu.save'), textScaleFactor: 1.5),
+                child: Text(FlutterI18n.translate(context, 'menu.save'),
+                    textScaleFactor: 1.5),
                 onPressed: () {
                   showAlertDialog(context);
                 },
@@ -148,14 +148,13 @@ class SettingsScreenState extends State<SettingsScreen> {
     );
     Widget continueButton = FlatButton(
       child: Text("Continue"),
+      textColor: Colors.white,
       onPressed: () {
         goToPreviousScreen();
 
-        _scaffoldKey.currentState
-          .showSnackBar(
-            SnackBar(
-              content: Text('Settings Saved!'),
-              duration: Duration(seconds: 2),
+        _scaffoldKey.currentState.showSnackBar(SnackBar(
+          content: Text('Settings Saved!'),
+          duration: Duration(seconds: 2),
         ));
       },
     );
@@ -163,6 +162,7 @@ class SettingsScreenState extends State<SettingsScreen> {
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
       title: Text("Save Changes"),
+      
       content: Text("Would you like to save changes?"),
       actions: [
         cancelButton,

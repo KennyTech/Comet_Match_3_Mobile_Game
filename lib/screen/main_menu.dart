@@ -198,19 +198,6 @@ import 'package:nice_button/nice_button.dart';
 //   }
 // }
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Flare',
-      theme: ThemeData(
-        primaryColor: Colors.blue,
-      ),
-      home: MainMenu(),
-    );
-  }
-}
-
 class MenuItem {
   final String name;
   final Color color;
