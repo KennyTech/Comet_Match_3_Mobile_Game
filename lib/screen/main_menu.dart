@@ -252,7 +252,7 @@ class MainMenuState extends State<MainMenu> {
   }
 
   Future loadMusic() async {
-    advancedPlayer = await AudioCache().loop("audios/mainmenu3.mp3");
+    advancedPlayer = await AudioCache().loop("../assets/audios/mainmenu3.mp3");
   }
 
   pause() async {
@@ -260,7 +260,7 @@ class MainMenuState extends State<MainMenu> {
   }
 
   play() async {
-    await advancedPlayer.play("audios/mainmenu3.mp3");
+    await advancedPlayer.play("../assets/audios/mainmenu3.mp3");
   }
 
   @override
