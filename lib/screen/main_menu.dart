@@ -8,20 +8,15 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:finalproject/screen/level_select.dart';
-import 'package:finalproject/screen/character_compendium.dart';
 import 'package:finalproject/screen/settings_screen.dart';
 import 'package:finalproject/screen/test_console.dart';
 import 'package:finalproject/screen/credits_screen.dart';
-import 'package:finalproject/screen/map.dart';
 import 'package:finalproject/screen/scores_chart_screen.dart';
-import 'package:flutter_i18n/flutter_i18n.dart';
-import 'package:flutter_i18n/flutter_i18n_delegate.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:nice_button/nice_button.dart';
+import 'package:finalproject/services/base_auth.dart';
 
 class MenuItem {
   final String name;
@@ -32,7 +27,18 @@ class MenuItem {
 }
 
 class MainMenu extends StatefulWidget {
-  createState() => MainMenuState();
+
+  MainMenu({Key key, this.auth, this.userId, this.logoutCallback}) : super(key: key);
+
+  final BaseAuth auth;
+  final String userId;
+  final VoidCallback logoutCallback;
+
+  @override
+  State<StatefulWidget> createState() {
+    return MainMenuState();
+  }
+
 }
 
 class MainMenuState extends State<MainMenu> {
@@ -98,6 +104,41 @@ class MainMenuState extends State<MainMenu> {
     var firstColor = Color(0xFFD500F9), secondColor = Color(0xFF6A1B9A);
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
+
+      // --- Logout button ---
+      /*
+      appBar: AppBar(
+        title: Text("Mobile Game Base"),
+        actions: <Widget>[
+          PopupMenuButton<String>(
+            offset: Offset(0, 100),
+            onSelected: (choice) {
+              if(choice == 'Logout') {
+                showLogOutAlertDialog(context);
+              }
+            },
+            itemBuilder: (BuildContext context) => [
+              PopupMenuItem(
+                value: 'Logout',
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      child: Text('Logout'),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(left: 5.0),
+                      child: Icon(Icons.exit_to_app),
+                    ),
+                  ],
+                ),
+              )
+            ]
+          )
+        ],
+      ),
+      */
+      // --- end logout button ---
+
       backgroundColor: Color(0xFF121212),
       body: Container(
         //color: Colors.black,
@@ -184,7 +225,7 @@ class MainMenuState extends State<MainMenu> {
               gradientColors: [secondColor, firstColor],
               onPressed: () {
                 //quit
-              },
+              }, background: null,
             )
           ],
         ),
@@ -192,6 +233,8 @@ class MainMenuState extends State<MainMenu> {
     );
   }
 
+  // Icon Animation
+  // ---------------------------------------
   Widget _flare(MenuItem item) {
     return GestureDetector(
       child: AspectRatio(
@@ -217,6 +260,8 @@ class MainMenuState extends State<MainMenu> {
     );
   }
 
+  // Screen Navigation
+  // ---------------------------------------
   void _goToScreen(MenuItem item) async {
     debugPrint("Going to play screen");
 
@@ -239,4 +284,47 @@ class MainMenuState extends State<MainMenu> {
       // do something if needed in future
     }
   }
+
+  // Logout functions
+  // ---------------------------------------
+
+  //dialog to log out
+  showLogOutAlertDialog(BuildContext context) {
+    // set up the buttons
+    Widget noBtn = FlatButton(
+      child: Text("No"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+    Widget yesBtn = FlatButton(
+      child: Text("Yes"),
+      onPressed: () async {
+        await widget.auth.signOut();
+
+        widget.logoutCallback();
+
+        Navigator.of(context).pop();
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Logout"),
+      content: Text("Are you sure you want to logout?"),
+      actions: [
+        noBtn,
+        yesBtn,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
 }

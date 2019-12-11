@@ -4,7 +4,6 @@ import 'package:finalproject/screen/authentication/sign_in.dart';
 
 import 'package:finalproject/services/base_auth.dart';
 import 'package:finalproject/screen/main_menu.dart';
-import 'package:finalproject/screen/login_screen.dart';
 
 enum AuthStatus {
   NOT_DETERMINED,
@@ -79,7 +78,7 @@ class _RootPageState extends State<RootPage> {
         break;
       case AuthStatus.LOGGED_IN:
         if(_userId.length > 0 && _userId != null) {
-          return new Login(
+          return new MainMenu(
             userId: _userId,
             auth: widget.auth,
             logoutCallback: logoutCallback,
