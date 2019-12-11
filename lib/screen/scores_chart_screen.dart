@@ -11,10 +11,10 @@ import 'package:flutter/rendering.dart';
 
 import 'dart:math';
 import 'package:pie_chart/pie_chart.dart';
-import 'package:sqlite/screen/scores_table_screen.dart';
+import 'package:finalproject/screen/scores_table_screen.dart';
 
-import 'package:sqlite/localstorage/players_model.dart';
-import 'package:sqlite/localstorage/player.dart';
+import 'package:finalproject/localstorage/players_model.dart';
+import 'package:finalproject/localstorage/player.dart';
 import 'package:sqflite/sqflite.dart';
 
 

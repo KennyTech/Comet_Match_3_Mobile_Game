@@ -6,7 +6,7 @@
 
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:sqlite/screen/play_screen.dart';
+import 'package:finalproject/screen/play_screen.dart';
 
 class LevelSelect extends StatefulWidget {
   final int state; // use if needed otherwise remove as argument

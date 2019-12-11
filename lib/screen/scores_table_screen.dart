@@ -8,9 +8,9 @@ import 'package:flutter/material.dart';
 
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/rendering.dart';
-import 'package:sqlite/screen/scores_chart_screen.dart';
-import 'package:sqlite/localstorage/players_model.dart';
-import 'package:sqlite/localstorage/player.dart';
+import 'package:finalproject/screen/scores_chart_screen.dart';
+import 'package:finalproject/localstorage/players_model.dart';
+import 'package:finalproject/localstorage/player.dart';
 import 'package:sqflite/sqflite.dart';
 import 'dart:math';
 
@@ -142,7 +142,10 @@ class ScoresTableScreenState extends State<ScoresTableScreen> {
                           'High Score Table',
                           textScaleFactor: 1.4,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          //TODO: Implement High Scores Table 
+
+                        },
                       ),
                     ),
                   ],

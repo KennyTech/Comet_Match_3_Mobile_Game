@@ -4,32 +4,64 @@
 * Initial menu screen including buttons for [Play], [Settings], [Quit], etc.
 *
 */
-
-import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:sqlite/screen/level_select.dart';
-import 'package:sqlite/screen/character_compendium.dart';
-import 'package:sqlite/screen/settings_screen.dart';
-import 'package:sqlite/screen/test_console.dart';
-import 'package:sqlite/screen/credits_screen.dart';
-import 'package:sqlite/screen/scores_chart_screen.dart';
+
+import 'package:finalproject/screen/level_select.dart';
+import 'package:finalproject/screen/character_compendium.dart';
+import 'package:finalproject/screen/settings_screen.dart';
+import 'package:finalproject/screen/test_console.dart';
+import 'package:finalproject/screen/credits_screen.dart';
+import 'package:finalproject/screen/scores_chart_screen.dart';
+
+import 'package:finalproject/services/base_auth.dart';
+
 import 'package:flutter_i18n/flutter_i18n.dart';
-import 'package:flutter_i18n/flutter_i18n_delegate.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 class MainMenu extends StatefulWidget {
+  MainMenu({Key key, this.auth, this.userId, this.logoutCallback}) : super(key: key);
+
+  final BaseAuth auth;
+  final String userId;
+  final VoidCallback logoutCallback;
+
   @override
   State<StatefulWidget> createState() {
     return MainMenuState();
   }
 }
 
-class MainMenuState extends State<MainMenu> {
+class MainMenuState extends State<MainMenu> { 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Mobile Game Base"),
+        actions: <Widget>[
+          PopupMenuButton<String>(
+            offset: Offset(0, 100),
+            onSelected: (choice) {
+              if(choice == 'Logout') {
+                showLogOutAlertDialog(context);
+              }
+            },
+            itemBuilder: (BuildContext context) => [
+              PopupMenuItem(
+                value: 'Logout',
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      child: Text('Logout'),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(left: 5.0),
+                      child: Icon(Icons.exit_to_app),
+                    ),
+                  ],
+                ),
+              )
+            ]
+          )
+        ],
       ),
       body: Container(
         alignment: Alignment.center,
@@ -183,12 +215,42 @@ class MainMenuState extends State<MainMenu> {
     }
   }
 
-  // Alert (currently unused)
-  void _showAlertDialog(String title, String message) {
-    AlertDialog alertDialog = AlertDialog(
-      title: Text(title),
-      content: Text(message),
+  //dialog to log out
+  showLogOutAlertDialog(BuildContext context) {
+    // set up the buttons
+    Widget noBtn = FlatButton(
+      child: Text("No"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
     );
-    showDialog(context: context, builder: (_) => alertDialog);
+    Widget yesBtn = FlatButton(
+      child: Text("Yes"),
+      onPressed: () async {
+        await widget.auth.signOut();
+
+        widget.logoutCallback();
+
+        Navigator.of(context).pop();
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Logout"),
+      content: Text("Are you sure you want to logout?"),
+      actions: [
+        noBtn,
+        yesBtn,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 }

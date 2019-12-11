@@ -7,7 +7,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 
-import 'package:sqlite/notifications.dart';
+import 'package:finalproject/notifications.dart';
 
 class TestConsole extends StatefulWidget {
   final int state; // use if needed otherwise remove as argument
