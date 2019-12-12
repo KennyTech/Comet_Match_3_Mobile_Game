@@ -102,21 +102,19 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xFF121212),
-      // backgroundColor: Color(0xFF1F1B24),
       body: SingleChildScrollView(
-        //physics: NeverScrollableScrollPhysics(), // don't let page scroll down (we later increase height of page to prevent potential pixel overflow from some devices)
-        child: Stack(
-        children: _isSignInForm ? <Widget>[
-          _showSignInForm(),
-          showCircularProgress(),
-        ] : <Widget> [
-          _showSignUpForm(),
-          showCircularProgress(),
-        ],
+          child: Stack(
+          children: _isSignInForm ? <Widget>[
+            _showSignInForm(),
+            // showCircularProgress(),
+          ] : <Widget> [
+            _showSignUpForm(),
+            // showCircularProgress(),
+          ],
+        ),
       ),
-      ),
+      resizeToAvoidBottomInset: false,
     );  
   }
 
@@ -133,7 +131,6 @@ class _SignInState extends State<SignIn> {
 
     Widget _showSignUpForm() {
     return new Container(
-      //height: MediaQuery.of(context).size.width*2.5, // Increase height of page to prevent pixel overflow from some devices
       child: Column(
         children: <Widget>[
           showLogo(),
@@ -159,12 +156,8 @@ class _SignInState extends State<SignIn> {
     );
   }
 
-
-
-
   Widget _showSignInForm() {
     return new Container(
-      //height: MediaQuery.of(context).size.width*2.5, // Increase height of page to prevent pixel overflow from some devices
       child: Column(
         children: <Widget>[
           showLogo(),
@@ -284,25 +277,6 @@ class _SignInState extends State<SignIn> {
           child: new Text(_isSignInForm ? 'Sign-In' : 'Create account',
               style: new TextStyle(fontSize: 20.0, color: Colors.white)),
           onPressed: validateAndSubmit,
-          // onPressed: () {
-          //   validateAndSubmit();
-
-          //   if(_isSignInForm) {
-          //     _scaffoldKey.currentState
-          //       .showSnackBar(
-          //         SnackBar(
-          //           content: Text('Welcome back $_username!'),
-          //           duration: Duration(seconds: 2),
-          //     ));
-          //   } else {
-          //     _scaffoldKey.currentState
-          //       .showSnackBar(
-          //         SnackBar(
-          //           content: Text('Hello, $_username!'),
-          //           duration: Duration(seconds: 2),
-          //     ));
-          //   }
-          // },
         ),
       ),
     );

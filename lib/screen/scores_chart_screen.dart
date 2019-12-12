@@ -198,8 +198,8 @@ class ScoresChartScreenState extends State<ScoresChartScreen> {
                       height: 60,
                       child: RaisedButton(
                         elevation: 5,
-                        color: Colors.indigo[200],
-                        textColor: Colors.grey[300],
+                        color: Colors.teal[400],
+                        textColor: Colors.white,
                         child: Text(
                           'Score Charts',
                           textScaleFactor: 1.4,
@@ -213,7 +213,7 @@ class ScoresChartScreenState extends State<ScoresChartScreen> {
                       height: 60,
                       child: RaisedButton(
                         elevation: 5,
-                        color: Colors.blue,
+                        color: Colors.purple[400],
                         textColor: Colors.white,
                         child: Text(
                           'High Score Tables',
@@ -225,15 +225,15 @@ class ScoresChartScreenState extends State<ScoresChartScreen> {
                   ],
                 ),
 
-            _displayText("YOUR STATS", 24, Colors.black, 24, 24),
+            _displayText("YOUR STATS", 24, Colors.white, 24, 24),
 
-            _displayText("Average Score (All)", 18, Colors.grey[700], 32, 0),
+            _displayText("Average Score (All)", 18, Colors.white, 32, 0),
             barChartWidget,
 
-            _displayText("Scores (Most Recent 10 Games)", 18, Colors.grey[700], 32, 0),
+            _displayText("Scores (Most Recent 10 Games)", 18, Colors.white, 32, 0),
             barScoresChartWidget,
 
-            _displayText("Times You Played", 18, Colors.grey[700], 0, 0),
+            _displayText("Times You Played", 18, Colors.white, 0, 0),
             pieChartWidget,
 
           ],
@@ -243,6 +243,7 @@ class ScoresChartScreenState extends State<ScoresChartScreen> {
       floatingActionButton: new FloatingActionButton(
         onPressed: _randomizeScoreAndTimes,
         tooltip: 'Randomize',
+        backgroundColor: Colors.teal[400],
         child: new Icon(Icons.add),
       ),
 
@@ -308,7 +309,7 @@ class ScoresChartScreenState extends State<ScoresChartScreen> {
             displayText,
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              color: textColor,
+              color: Colors.white,
               fontSize: fontSize
             ),
           ),
