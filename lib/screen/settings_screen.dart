@@ -91,9 +91,12 @@ class SettingsScreenState extends State<SettingsScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Container(
+                     padding: EdgeInsets.all(8.0),
                     width: 120.0,
                     alignment: Alignment.center,
-                    child: Text('Volume '),
+                    child: Text('Volume ',
+                    style: TextStyle(color: Colors.white),
+                    ),
                     color: Colors.teal[300],
                   ),
                   Flexible(
@@ -113,7 +116,8 @@ class SettingsScreenState extends State<SettingsScreen> {
                     width: 70.0,
                     alignment: Alignment.center,
                     child: Text(
-                      '${_sliderValue.toInt()}', // volume slider number display
+                      '${_sliderValue.toInt()}',
+                      style: TextStyle(color: Colors.white), // volume slider number display
                     ),
                     color: Colors.teal[300],
                   ),

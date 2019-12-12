@@ -35,6 +35,7 @@ class TestConsoleState extends State<TestConsole> {
           goToPreviousScreen();
         },
         child: Scaffold(
+          backgroundColor: Color(0xFF121212),
             appBar: AppBar(
               title: Text("Test Console"),
               leading: IconButton(
@@ -58,7 +59,7 @@ class TestConsoleState extends State<TestConsole> {
                             Text("Test Console",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.grey,
+                                    color: Colors.white70,
                                     fontSize: 18)),
                           ],
                         ),
@@ -71,7 +72,7 @@ class TestConsoleState extends State<TestConsole> {
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
                             RaisedButton(
-                              color: Colors.blue,
+                              color: Colors.teal[300],
                               splashColor: Colors.white,
                               onPressed: () => {},
                               child: Text('Gain Max Currency',
@@ -88,7 +89,7 @@ class TestConsoleState extends State<TestConsole> {
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
                             RaisedButton(
-                              color: Colors.blue,
+                              color: Colors.teal[300],
                               splashColor: Colors.white,
                               onPressed: () => {},
                               child: Text('Unlock All Levels',
@@ -105,7 +106,7 @@ class TestConsoleState extends State<TestConsole> {
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
                             RaisedButton(
-                              color: Colors.blue,
+                              color: Colors.teal[300],
                               splashColor: Colors.white,
                               onPressed: () => {},
                               child: Text('Set High Score',
@@ -122,7 +123,7 @@ class TestConsoleState extends State<TestConsole> {
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
                             RaisedButton(
-                              color: Colors.blue,
+                              color: Colors.teal[300],
                               splashColor: Colors.white,
                               onPressed: () => _sendNotification(),
                               child: Text('Notify Me in 10 Seconds',
@@ -139,7 +140,7 @@ class TestConsoleState extends State<TestConsole> {
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
                             RaisedButton(
-                              color: Colors.blue,
+                              color: Colors.teal[300],
                               splashColor: Colors.white,
                               onPressed: () => {},
                               child: Text('Back',

@@ -27,8 +27,8 @@ class MenuItem {
 }
 
 class MainMenu extends StatefulWidget {
-
-  MainMenu({Key key, this.auth, this.userId, this.logoutCallback}) : super(key: key);
+  MainMenu({Key key, this.auth, this.userId, this.logoutCallback})
+      : super(key: key);
 
   final BaseAuth auth;
   final String userId;
@@ -38,7 +38,6 @@ class MainMenu extends StatefulWidget {
   State<StatefulWidget> createState() {
     return MainMenuState();
   }
-
 }
 
 class MainMenuState extends State<MainMenu> {
@@ -78,7 +77,7 @@ class MainMenuState extends State<MainMenu> {
   void initState() {
     super.initState();
     active = items[0];
-    loadMusic();
+    //loadMusic();
   }
 
   Future loadMusic() async {
@@ -104,7 +103,6 @@ class MainMenuState extends State<MainMenu> {
     var firstColor = Color(0xFFD500F9), secondColor = Color(0xFF6A1B9A);
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
-
       // --- Logout button ---
       /*
       appBar: AppBar(
@@ -158,7 +156,7 @@ class MainMenuState extends State<MainMenu> {
             Container(
               height: 77,
               width: 390,
-              //color: Colors.red,
+              //color: Colors.,
               child: Stack(
                 children: [
                   AnimatedContainer(
@@ -181,7 +179,37 @@ class MainMenuState extends State<MainMenu> {
                     ),
                   ),
                 ],
-
+              ),
+            ),
+            Container(
+              height: 77,
+              width: 390,
+              //color: Colors.black,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    "play",
+                    style: TextStyle(color: Colors.yellow, fontSize: 13.0),
+                  ),
+                  Text(
+                    "    highscores",
+                    style: TextStyle(color: Colors.pink, fontSize: 13.0),
+                  ),
+                  Text(
+                    "testconsole ",
+                    style: TextStyle(color: Colors.grey, fontSize: 13.0),
+                  ),
+                   Text(
+                    "settings",
+                    style: TextStyle(color: Colors.red, fontSize: 13.0),
+                  ),
+                  Text(
+                    " credits",
+                    style: TextStyle(color: Colors.purple, fontSize: 13.0),
+                  ),
+                ],
               ),
             ),
             Container(
@@ -231,7 +259,8 @@ class MainMenuState extends State<MainMenu> {
                       gradientColors: [secondColor, firstColor],
                       onPressed: () {
                         //quit
-                      }, background: null,
+                      },
+                      background: null,
                     ),
                   ),
                   NiceButton(
@@ -245,7 +274,8 @@ class MainMenuState extends State<MainMenu> {
                     gradientColors: [secondColor, firstColor],
                     onPressed: () {
                       showLogOutAlertDialog(context);
-                    }, background: null,
+                    },
+                    background: null,
                   ),
                 ],
               ),
@@ -315,13 +345,19 @@ class MainMenuState extends State<MainMenu> {
   showLogOutAlertDialog(BuildContext context) {
     // set up the buttons
     Widget noBtn = FlatButton(
-      child: Text("No", style: TextStyle(color: Colors.teal[400]),),
+      child: Text(
+        "No",
+        style: TextStyle(color: Colors.teal[400]),
+      ),
       onPressed: () {
         Navigator.of(context).pop();
       },
     );
     Widget yesBtn = FlatButton(
-      child: Text("Yes", style: TextStyle(color: Colors.teal[400]),),
+      child: Text(
+        "Yes",
+        style: TextStyle(color: Colors.teal[400]),
+      ),
       onPressed: () async {
         await widget.auth.signOut();
 
@@ -333,8 +369,14 @@ class MainMenuState extends State<MainMenu> {
 
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
-      title: Text("Logout", style: TextStyle(color: Colors.teal[400]),),
-      content: Text("Are you sure you want to logout?", style: TextStyle(color: Colors.teal[400]),),
+      title: Text(
+        "Logout",
+        style: TextStyle(color: Colors.teal[400]),
+      ),
+      content: Text(
+        "Are you sure you want to logout?",
+        style: TextStyle(color: Colors.teal[400]),
+      ),
       backgroundColor: Color(0xFF1F1B24),
       actions: [
         noBtn,
@@ -350,5 +392,4 @@ class MainMenuState extends State<MainMenu> {
       },
     );
   }
-
 }
