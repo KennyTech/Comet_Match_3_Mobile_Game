@@ -114,9 +114,5 @@ bundle {
 <<<<<<< HEAD
 -  Level select with map
 -  UI
-=======
-- Maps
--  
->>>>>>> 5daec248ee7f1052b7e58221b014678f0c0b73f4
--  
+-  QA
   
