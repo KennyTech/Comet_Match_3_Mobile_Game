@@ -11,7 +11,7 @@
   
 This project uses flutter_unity_widget to embed a Unity Game into a Flutter project.  
   
-    <img src="https://i.imgur.com/JUrh8rt.png" width="800" />  
+<img src="https://i.imgur.com/JUrh8rt.png" width="400" />  
   
   
 ## Building the Project
@@ -87,30 +87,31 @@ bundle {
 6. [Settings] allows the user to change language or volume.  
 7. [Credits] displays creators and roles.
   
-      <img src="https://i.imgur.com/kTjbRBB.png" width="800" />    
-      <img src="https://i.imgur.com/GindCvk.png" width="800" />  
-
+<img src="https://i.imgur.com/kTjbRBB.png" width="400" />  
+<img src="https://i.imgur.com/GindCvk.png" width="400" />  
+  
+  
 ### Group Roles  
   
-**Lines committed may not accurately reflect contribution since we used separate development branches and merged later. Some members contributed in other aspects of development (graphics, design, sound, art, QA)**  
+**Lines committed may not accurately reflect contribution since we used separate development branches and using pull requests, merged later, sometimes by someone else. Some members contributed in other aspects of development (graphics, design, sound, art, QA). We believe each member contributed a significant amount.**  
 
 **Mustafa:**
--  
--  
--  
+- Firebase, Login, Logout
+- Local Databases
+- UI Design
   
 **Daniyal:**  
--  
--  
--  
+- Sound Track
+- Menu Screen, UI Designm, Local Databases
+- Graphics, Design, Sound, Art, QA
   
 **Kenny:**  
--  
--  
--  
+- Unity - Match 3 Game Design
+- Base System
+- 
   
 **Alvin:**  
--  
+- Maps
 -  
 -  
   
