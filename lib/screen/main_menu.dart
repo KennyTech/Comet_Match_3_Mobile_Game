@@ -77,7 +77,7 @@ class MainMenuState extends State<MainMenu> {
   void initState() {
     super.initState();
     active = items[0];
-    //loadMusic();
+    loadMusic();
   }
 
   Future loadMusic() async {
@@ -103,40 +103,6 @@ class MainMenuState extends State<MainMenu> {
     var firstColor = Color(0xFFD500F9), secondColor = Color(0xFF6A1B9A);
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
-      // --- Logout button ---
-      /*
-      appBar: AppBar(
-        title: Text("Mobile Game Base"),
-        actions: <Widget>[
-          PopupMenuButton<String>(
-            offset: Offset(0, 100),
-            onSelected: (choice) {
-              if(choice == 'Logout') {
-                showLogOutAlertDialog(context);
-              }
-            },
-            itemBuilder: (BuildContext context) => [
-              PopupMenuItem(
-                value: 'Logout',
-                child: Row(
-                  children: <Widget>[
-                    Container(
-                      child: Text('Logout'),
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(left: 5.0),
-                      child: Icon(Icons.exit_to_app),
-                    ),
-                  ],
-                ),
-              )
-            ]
-          )
-        ],
-      ),
-      */
-      // --- end logout button ---
-
       backgroundColor: Color(0xFF121212),
       body: Container(
         //color: Colors.black,

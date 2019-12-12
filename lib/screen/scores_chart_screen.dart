@@ -198,7 +198,7 @@ class ScoresChartScreenState extends State<ScoresChartScreen> {
                       height: 60,
                       child: RaisedButton(
                         elevation: 5,
-                        color: Colors.indigo[200],
+                        color: Colors.teal[400],
                         textColor: Colors.white,
                         child: Text(
                           'Score Charts',
@@ -213,7 +213,7 @@ class ScoresChartScreenState extends State<ScoresChartScreen> {
                       height: 60,
                       child: RaisedButton(
                         elevation: 5,
-                        color: Colors.blue,
+                        color: Colors.purple[400],
                         textColor: Colors.white,
                         child: Text(
                           'High Score Tables',
@@ -243,6 +243,7 @@ class ScoresChartScreenState extends State<ScoresChartScreen> {
       floatingActionButton: new FloatingActionButton(
         onPressed: _randomizeScoreAndTimes,
         tooltip: 'Randomize',
+        backgroundColor: Colors.teal[400],
         child: new Icon(Icons.add),
       ),
 
