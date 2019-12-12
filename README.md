@@ -111,7 +111,6 @@ bundle {
 - 
   
 **Alvin:**  
-<<<<<<< HEAD
 -  Level select with map
 -  UI
 -  QA
