@@ -28,8 +28,8 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.grey,
         primaryColor: const Color(0xFF212121),
-        accentColor: const Color(0xFF2196f3),
-        canvasColor: const Color(0xFF121212),
+        accentColor: const Color(0xFFFFFFFF),
+        canvasColor: const Color(0xFF616161),
         fontFamily: 'Roboto',
       ),
       home: new RootPage(auth: new Auth()),
