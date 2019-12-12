@@ -215,18 +215,41 @@ class MainMenuState extends State<MainMenu> {
                 ],
               ),
             ),
-            NiceButton(
-              radius: 40,
-              width: 145,
-              elevation: 8.0,
-              padding: const EdgeInsets.all(15),
-              text: "Quit",
-              icon: Icons.home,
-              gradientColors: [secondColor, firstColor],
-              onPressed: () {
-                //quit
-              }, background: null,
-            )
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: NiceButton(
+                      radius: 40,
+                      width: 145,
+                      elevation: 8.0,
+                      padding: const EdgeInsets.all(15),
+                      text: "Quit",
+                      fontSize: 16.0,
+                      icon: Icons.home,
+                      gradientColors: [secondColor, firstColor],
+                      onPressed: () {
+                        //quit
+                      }, background: null,
+                    ),
+                  ),
+                  NiceButton(
+                    radius: 40,
+                    width: 145,
+                    elevation: 8.0,
+                    padding: const EdgeInsets.all(15),
+                    text: "Logout",
+                    fontSize: 16.0,
+                    icon: Icons.exit_to_app,
+                    gradientColors: [secondColor, firstColor],
+                    onPressed: () {
+                      showLogOutAlertDialog(context);
+                    }, background: null,
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
@@ -292,13 +315,13 @@ class MainMenuState extends State<MainMenu> {
   showLogOutAlertDialog(BuildContext context) {
     // set up the buttons
     Widget noBtn = FlatButton(
-      child: Text("No"),
+      child: Text("No", style: TextStyle(color: Colors.teal[400]),),
       onPressed: () {
         Navigator.of(context).pop();
       },
     );
     Widget yesBtn = FlatButton(
-      child: Text("Yes"),
+      child: Text("Yes", style: TextStyle(color: Colors.teal[400]),),
       onPressed: () async {
         await widget.auth.signOut();
 
@@ -310,8 +333,9 @@ class MainMenuState extends State<MainMenu> {
 
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
-      title: Text("Logout"),
-      content: Text("Are you sure you want to logout?"),
+      title: Text("Logout", style: TextStyle(color: Colors.teal[400]),),
+      content: Text("Are you sure you want to logout?", style: TextStyle(color: Colors.teal[400]),),
+      backgroundColor: Color(0xFF1F1B24),
       actions: [
         noBtn,
         yesBtn,
