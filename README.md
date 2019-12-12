@@ -14,15 +14,28 @@ This project uses flutter_unity_widget to embed a Unity Game into a Flutter proj
   
 ## Building the Project
   
-1. Open IDE of choice (VSCode, Android Studio, etc) and open the project folder (csci4100u_finalproject)  
+1. Open IDE of choice (VSCode, Android Studio, etc) and open the project folder (csci4100u_finalproject), click get dependencies (Dart/Flutter).  
   
-2. => **VSCode**: Flutter launch emulator, recommended Android 8-9 (API 27-28). Debug -> Start Debugging (F5).  
-      **Android Studio**: AVD Tools (Ctrl+Shift+A search if you can't find it), launch emulator. Run (Shift+F10).  
+2. **VSCode**: Flutter launch emulator, recommended Android 8-9 (API 27-28). Then Debug -> Start Debugging (F5).  
+   **Android Studio**: AVD Tools (Ctrl+Shift+A search if you can't find it), launch emulator. Then Run (Shift+F10).  
   
 3. Project should boot up. It is compatible with x32 and x64 architecture. You may use a physical Android device with USB debugging.  
   
   
 **If project does not boot, check that Flutter / Dart / Gradle is updated for your IDE. Do not forget to click "Get dependencies" or enter 'pub get' (dart) / 'flutter packages get' (flutter) when opening project for first time.**
+
+**Tested on:**
+  
+[✓] Flutter (Channel stable, v1.9.1+hotfix.6, on Microsoft Windows [Version 10])  
+    • Flutter version 1.7.8+hotfix.4 or below WILL NOT WORK  
+    • Please update to 1.9.1+hotfix.6+  
+    • Dart version 2.4.0  
+  
+[✓] VS Code, 64-bit edition (version 1.39.2)  
+    • Flutter extension version 3.6.0  
+  
+[✓] Android Emulator x86 (Nexus, Pixel, Android 8-10, SDK 27-29), Physical Android 8  
+  
   
 **If project still does not boot, follow our video tutorial below:**  
 
@@ -62,14 +75,14 @@ bundle {
 4. [Scores] displays the players scores and high scores in charts and tables.  
 5. [Test Console] allows the user to quickly test some functionality.  
 6. [Settings] allows the user to change language or volume.  
-7. [Credits] displays creators and roles.**
+7. [Credits] displays creators and roles.
   
 
 ### Group Roles  
   
 **Lines committed may not accurately reflect contribution since we used separate development branches and merged later. Some members contributed in other aspects of development (graphics, design, sound, art, QA)**  
 
-**Kenny:**
+**Mustafa:**
 -  
 -  
 -  
@@ -79,7 +92,7 @@ bundle {
 -  
 -  
   
-**Mustafa:**  
+**Kenny:**  
 -  
 -  
 -  
