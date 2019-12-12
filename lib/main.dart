@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       title: 'Mobile Project Game',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.indigo,
+        primarySwatch: Colors.blueGrey,
       ),
       home: new RootPage(auth: new Auth()),
       localizationsDelegates: [
