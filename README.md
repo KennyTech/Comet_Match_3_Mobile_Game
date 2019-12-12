@@ -1,4 +1,4 @@
-# CSCI4100U - Final Group Project
+﻿# CSCI4100U - Final Group Project
 
 ## Group Members: 
 - Mustafa Al-Azzawe (100617392)
@@ -110,7 +110,7 @@ bundle {
 -  
   
 **Alvin:**  
--  
--  
+-  Level select with map
+-  UI
 -  
   
