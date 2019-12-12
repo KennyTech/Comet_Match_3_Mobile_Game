@@ -14,6 +14,8 @@ import 'package:finalproject/localstorage/player.dart';
 import 'package:sqflite/sqflite.dart';
 import 'dart:math';
 
+import 'package:finalproject/screen/main_menu.dart';
+
 class ScoresTableScreen extends StatefulWidget {
 
 	ScoresTableScreen();
@@ -106,7 +108,13 @@ class ScoresTableScreenState extends State<ScoresTableScreen> {
     
 
     return Scaffold(
-      appBar: AppBar(title: Text("High Scores")),
+      appBar: AppBar(
+          leading: new IconButton(
+          icon: new Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MainMenu()))
+        ), 
+        title: Text("High Scores"), 
+      ),
       body: SingleChildScrollView(
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -121,7 +129,7 @@ class ScoresTableScreenState extends State<ScoresTableScreen> {
                       height: 60,
                       child: RaisedButton(
                         elevation: 5,
-                        color: Colors.blue,
+                        color: Colors.teal[400],
                         textColor: Colors.white,
                         child: Text(
                           'Score Charts',
@@ -136,8 +144,8 @@ class ScoresTableScreenState extends State<ScoresTableScreen> {
                       height: 60,
                       child: RaisedButton(
                         elevation: 5,
-                        color: Colors.indigo[200],
-                        textColor: Colors.grey[300],
+                        color: Colors.purple[400],
+                        textColor: Colors.white,
                         child: Text(
                           'High Score Table',
                           textScaleFactor: 1.4,

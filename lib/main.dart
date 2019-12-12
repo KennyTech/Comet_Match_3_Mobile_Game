@@ -25,8 +25,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Mobile Project Game',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
+      theme: new ThemeData(
+        primarySwatch: Colors.grey,
+        primaryColor: const Color(0xFF212121),
+        accentColor: const Color(0xFFFFFFFF),
+        canvasColor: const Color(0xFF616161),
+        fontFamily: 'Roboto',
       ),
       home: new RootPage(auth: new Auth()),
       localizationsDelegates: [

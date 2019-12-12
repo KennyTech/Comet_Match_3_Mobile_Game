@@ -40,7 +40,7 @@ class SettingsScreenState extends State<SettingsScreen> {
           leading: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () {
-                goToPreviousScreen();
+                Navigator.of(context).pop();
               }),
         ),
         body: Padding(
@@ -48,6 +48,40 @@ class SettingsScreenState extends State<SettingsScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.all(8.0),
+                    width: 120.0,
+                    alignment: Alignment.center,
+                    child: Text('Volume ',
+                    style: TextStyle(color: Colors.teal[300], fontSize: 18),
+                    ),
+                  ),
+                  Flexible(
+                    flex: 1,
+                    child: Slider(
+                      // volume slider
+                      activeColor: Colors.purple,
+                      min: 0.0,
+                      max: 100.0,
+                      onChanged: (newRating) {
+                        setState(() => _sliderValue = newRating);
+                      },
+                      value: _sliderValue,
+                    ),
+                  ),
+                  Container(
+                    width: 70.0,
+                    alignment: Alignment.center,
+                    child: Text(
+                      '${_sliderValue.toInt()}',
+                      style: TextStyle(color: Colors.teal[300], fontSize: 18), // volume slider number display
+                    ),
+                  ),
+                ],
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -87,41 +121,11 @@ class SettingsScreenState extends State<SettingsScreen> {
                   ),
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Container(
-                    width: 120.0,
-                    alignment: Alignment.center,
-                    child: Text('Volume '),
-                    color: Colors.teal[300],
-                  ),
-                  Flexible(
-                    flex: 1,
-                    child: Slider(
-                      // volume slider
-                      activeColor: Colors.purple,
-                      min: 0.0,
-                      max: 100.0,
-                      onChanged: (newRating) {
-                        setState(() => _sliderValue = newRating);
-                      },
-                      value: _sliderValue,
-                    ),
-                  ),
-                  Container(
-                    width: 70.0,
-                    alignment: Alignment.center,
-                    child: Text(
-                      '${_sliderValue.toInt()}', // volume slider number display
-                    ),
-                    color: Colors.teal[300],
-                  ),
-                ],
-              ),
               RaisedButton(
+                color: Colors.purple[300],
                 child: Text(FlutterI18n.translate(context, 'menu.save'),
-                    textScaleFactor: 1.5),
+                    textScaleFactor: 1.5,
+                    style: TextStyle(color: Colors.white)),
                 onPressed: () {
                   showAlertDialog(context);
                 },
@@ -141,13 +145,14 @@ class SettingsScreenState extends State<SettingsScreen> {
   showAlertDialog(BuildContext context) {
     // set up the buttons
     Widget cancelButton = FlatButton(
-      child: Text("Cancel"),
+      child: Text("Cancel", style: TextStyle(color: Colors.teal[400]),),
+
       onPressed: () {
         Navigator.of(context).pop();
       },
     );
     Widget continueButton = FlatButton(
-      child: Text("Continue"),
+      child: Text("Continue", style: TextStyle(color: Colors.teal[400]),),
       textColor: Colors.white,
       onPressed: () {
         goToPreviousScreen();
@@ -161,9 +166,9 @@ class SettingsScreenState extends State<SettingsScreen> {
 
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
-      title: Text("Save Changes"),
-      
-      content: Text("Would you like to save changes?"),
+      title: Text("Save Changes", style: TextStyle(color: Colors.teal[400]),),
+      content: Text("Would you like to save changes?", style: TextStyle(color: Colors.teal[400]),),
+      backgroundColor: Color(0xFF1F1B24),
       actions: [
         cancelButton,
         continueButton,
