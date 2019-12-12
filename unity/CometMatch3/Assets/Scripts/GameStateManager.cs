@@ -1,19 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class GameStateManager : MonoBehaviour
 {
-    /// <summary>
-    /// </summary>
+
     [SerializeField]
-    Enemy currentEnemy;
+    public int level;
 
-    // [SerializeField]
-    // Skill attackSkill;
-
-    // [SerializeField]
-    // Skill distanceSkill;
+    [SerializeField]
+    public static Text levelText;
 
     public static GameStateManager instance;
 
@@ -36,6 +34,21 @@ public class GameStateManager : MonoBehaviour
                 Destroy(this);
             }
         }
+
+    }
+
+    public void setGameLevel(int level)
+    {
+        if (level == 1)
+            levelText.text = "Mission: Japan";
+        else if (level == 2)
+            levelText.text = "Mission: USA";
+        else if (level == 3)
+            levelText.text = "Mission: Russia";
+        else if (level == 4)
+            levelText.text = "Mission: France";
+        else if (level == 5)
+            levelText.text = "Mission: China";
     }
 
     // Update is called once per frame
@@ -58,12 +71,13 @@ public class GameStateManager : MonoBehaviour
         // currentEnemy.IncreaseDistance(10);
     }
 
-    /// <summary>
-    /// Temporary
-    /// </summary>
-    /// <returns></returns>
-    public Enemy GetEnemy()
-    {
-        return currentEnemy;
-    }
+    // /// <summary>
+    // /// Temporary
+    // /// </summary>
+    // /// <returns></returns>
+    // public Enemy GetEnemy()
+    // {
+    //     print("No enemy");
+    //     return;
+    // }
 }

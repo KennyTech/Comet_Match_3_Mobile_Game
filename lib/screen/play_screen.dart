@@ -29,6 +29,8 @@ class PlayScreenState extends State<PlayScreen>{
 
   Widget build(BuildContext context) {
 
+    //setLevel(1); // Call from Flutter to Unity to set the level for Unity
+
     return Scaffold(
       key: _scaffoldKey,
       body: SafeArea(
@@ -51,20 +53,20 @@ class PlayScreenState extends State<PlayScreen>{
   }
 
   // Communication from Flutter to Unity to tell Unity which level to load
-  // void setLevel(int level) {
-  //   _unityWidgetController.postMessage(
-  //     'LevelManager',
-  //     'setLevel',
-  //     level,
-  //   );
-  // }
+  void setLevel(int level) {
+    _unityWidgetController.postMessage(
+      'EventSystem',
+      'setGameLevel',
+      level,
+    );
+  }
 
   // Receive score from Unity
   void onUnityMessage(controller, message) {
-    print('Received message from unity: ${message.toString()}');
+    print('[FLUTTER LISTENER] Received message from unity: ${message.toString()}');
     playerScore = int.parse(message.toString());
-    print("Player Score: " + playerScore.toString()); // Test
-    _unityWidgetController.pause();
+    print("[FLUTTER] Player Score: " + playerScore.toString()); // Test
+    //_unityWidgetController.pause();
     //goToPreviousScreen();
   }
 

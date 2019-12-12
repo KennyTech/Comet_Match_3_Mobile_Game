@@ -28,7 +28,7 @@ class LevelSelectState extends State<LevelSelect> {
   final centre = LatLng(0,0);
   final levels = [LatLng(36.204824, 138.252924), LatLng(37.09024,-95.712891), LatLng(61.52401, 105.318756),
                   LatLng(46.227638,2.213749), LatLng(35.86166, 104.195397)];
-
+  // Level coordinates in order: Japan, US, Russia, France, China (Level)
   int count = 0; // levels
   int _selectedLevel = 0; // selected level
   List<bool> _selectedLevelColor = [
@@ -106,7 +106,7 @@ class LevelSelectState extends State<LevelSelect> {
                     color: Colors.blue,
                     iconSize: 45.0,
                     onPressed: () {
-                      _goToPlayScreen(1); // _goToPlayScreen(int level)
+                      _goToPlayScreen(2); // _goToPlayScreen(int level)
                           setState(() {
                             debugPrint("Start clicked");
                           });
@@ -124,7 +124,7 @@ class LevelSelectState extends State<LevelSelect> {
                     color: Colors.blue,
                     iconSize: 45.0,
                     onPressed: () {
-                      _goToPlayScreen(1); // _goToPlayScreen(int level)
+                      _goToPlayScreen(3); // _goToPlayScreen(int level)
                           setState(() {
                             debugPrint("Start clicked");
                           });
@@ -142,7 +142,7 @@ class LevelSelectState extends State<LevelSelect> {
                     color: Colors.blue,
                     iconSize: 45.0,
                     onPressed: () {
-                      _goToPlayScreen(1); // _goToPlayScreen(int level)
+                      _goToPlayScreen(4); // _goToPlayScreen(int level)
                           setState(() {
                             debugPrint("Start clicked");
                           });
@@ -160,7 +160,7 @@ class LevelSelectState extends State<LevelSelect> {
                     color: Colors.blue,
                     iconSize: 45.0,
                     onPressed: () {
-                      _goToPlayScreen(1); // _goToPlayScreen(int level)
+                      _goToPlayScreen(5); // _goToPlayScreen(int level)
                           setState(() {
                             debugPrint("Start clicked");
                           });

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Fuel : MonoBehaviour
 {
@@ -13,9 +14,13 @@ public class Fuel : MonoBehaviour
     [SerializeField]
     int amount = 1500;
 
+    [SerializeField]
+    GameObject GameOverScreen;
+
+
     void Start()
     {
-
+        GameOverScreen.SetActive(false);
     }
 
     void Update() 
@@ -41,11 +46,16 @@ public class Fuel : MonoBehaviour
             // Destroy
             Destroy(this.gameObject);
 
-            // Exit Unity, back to Flutter to display Scores screen
-            if (Application.platform == RuntimePlatform.Android)
-            {
-                Application.Quit();
-            }
+            GameOverScreen.SetActive(true);
+
+            // Restart level on loss
+            //SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+
+            // Exit Unity, back to Flutter to display Scores screen (this closes the entire app)
+            // if (Application.platform == RuntimePlatform.Android)
+            // {
+            //     Application.Quit();
+            // }
         }
     }
 
