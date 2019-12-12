@@ -37,6 +37,7 @@ class PlayScreenState extends State<PlayScreen>{
         bottom: false,
         child: WillPopScope(
           onWillPop: () {
+            goToPreviousScreen();
             // Pop the category page if Android back button is pressed.
           },
           child: Container(

@@ -47,7 +47,7 @@ class LevelSelectState extends State<LevelSelect> {
         },
         child: Scaffold(
           appBar: AppBar(
-            title: Text("Level Select"),
+            title: Text("Click on a marker to start playing"),
             leading: IconButton(
                 icon: Icon(Icons.arrow_back),
                 onPressed: () {
