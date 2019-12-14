@@ -122,3 +122,5 @@ bundle {
 -  UI
 -  QA
   
+  
+DOWNLOAD LINK TO APK (Play on your phone):  https://drive.google.com/open?id=1VSDsTfzcoLyPpDcmB7K-7fxlzjqcpxtb
