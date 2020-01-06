@@ -1,6 +1,9 @@
-﻿# CSCI4100U - Final Group Project
+# Purpose:
+A Match 3 game utilizing Cloud services (Google Firebase) for real-time database query of player statistics.  
+Further leverages powerful and cutting edge technology with Google's Flutter, a native android application development framework, in combination with the Unity Game Engine.  
+This allows for flexible and beautiful UI elements in the menus outside of the game, while also using a feature-intensive and flexible game engine.
 
-## Group Members: 
+## Contributors: 
 - Mustafa Al-Azzawe (100617392)
 - Daniyal Shah (100622173)
 - Kenny Le (100616323)
